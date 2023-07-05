@@ -16,7 +16,7 @@ while(<UMI>)
  }
 
 open(BAM,$ARGV[1]) || die "Unable to open file";
-
+$iter = 0;
 while(<BAM>)
  {
    $line=$_;
@@ -26,16 +26,19 @@ while(<BAM>)
    $chr = $a[3];
    if($chr ne $pchr)
     {
-      if($flag == 0)
+      if($iter > 0)
        {
-         $number = keys %uh;
-         print "$pchr\t$number\n";
-       }
-      if($flag == 1)
-       {
-         $number = 0;
-         print "$pchr\t$number\n";
-       }
+        if($flag == 0)
+         {
+           $number = keys %uh;
+           print "$pchr\t$number\n";
+         }
+        if($flag == 1)
+         {
+           $number = 0;
+           print "$pchr\t$number\n";
+         }
+        }
       %uh = ();
       $flag = 0;
       $v=$h{$id};
@@ -54,8 +57,8 @@ while(<BAM>)
       $uh{$v} = "AAA";
     }
    $pchr = $chr;
+   $iter++;
  }
-
 
       if($flag == 0)
        {
