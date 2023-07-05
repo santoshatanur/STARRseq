@@ -135,5 +135,5 @@ python manwitRow.py < REF + ALT DNA normalised count file> > <per oligo stats fi
 
 For example
 
-
+python manwitRow.py /demodata/output/test_REFALT_RNA_counts_TPM_DNAnorm.txt > /demodata/output/test_stats_row.txt
 ````
